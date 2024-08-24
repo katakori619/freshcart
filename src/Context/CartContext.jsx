@@ -12,7 +12,7 @@ export default function CartContextProvider({children}){
     async function checkout(shippingAddress){
         try{
             setLoading(true)
-            let redirectUrl = encodeURIComponent('https://katakori619.github.io/freshcart/#/allorders');
+            let redirectUrl = encodeURIComponent('https://katakori619.github.io/freshcart/#');
             let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.data._id}?url=${redirectUrl}`,
                 {shippingAddress},
                 {headers}
