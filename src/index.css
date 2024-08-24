@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    font-weight: bold;
+}
+.text-main{
+    color: rgb(0, 166, 11);
+}
+.rating-color{
+    color: gold;
+}
+.bg-main{
+    background-color: rgb(0, 166, 11);
+}
+.product .btn{
+    transition: transform 0.5s , opacity 0.5s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.card:hover .btn{
+    opacity: 1;
+    transform: translateY(0%);
+}
+footer{
+    background-color: rgb(240, 240, 240);
+}
+footer button{
+    background-color: rgb(0, 166, 11);
+}
+.card{
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+.card:hover{
+    box-shadow: 1px 1px 10px #4fa74f
+}
+.alert {
+    background-color: #00000086;
+}
+.alert .content{
+    transition-delay: 0.3s;
+}
+.cartbutton {
+    border-color: rgb(0, 166, 11);
+}
