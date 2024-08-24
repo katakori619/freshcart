@@ -10,7 +10,21 @@ export default function CategoriesSlider() {
         slidesToScroll: 1,
         arrows: false,
         autoplay:true,
-        autoplaySpeed:2000
+        autoplaySpeed:2000,
+        responsive: [
+          {
+              breakpoint: 1024,
+              settings: {
+                  slidesToShow: 4,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+              }
+          }
+      ]
       };
       const [categories,setCategories] = useState([])
       async function getRecentcategories(){

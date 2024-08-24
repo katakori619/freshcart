@@ -19,6 +19,5 @@ export default function Layout() {
       </div>
     <Footer/>
     </div>
-      
   </>
 }
