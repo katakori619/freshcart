@@ -27,7 +27,7 @@ import WishlistContextProvider from './Context/WishlistContext'
 import Email from './Components/Email/Email'
 import Code from './Components/Code/Code'
 import NewPassword from './Components/NewPassword/NewPassword'
-let routers = createBrowserRouter([
+let routers = createHashRouter([
   {path:'' , element: <Layout/> , children:[
     {index:true , element: <ProtectedRoute><Home/></ProtectedRoute>},
     {path:'cart' , element: <ProtectedRoute><Cart/></ProtectedRoute>},
