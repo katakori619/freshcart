@@ -18,6 +18,7 @@ export default function CartContextProvider({children}){
             )
             console.log(data);
             window.location.href = data.session.url
+            console.log(data.session.url);
             setLoading(false)
         }
         catch(err){
