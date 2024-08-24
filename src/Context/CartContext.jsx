@@ -12,12 +12,12 @@ export default function CartContextProvider({children}){
     async function checkout(shippingAddress){
         try{
             setLoading(true)
-            let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.data._id}?url=https://katakori619.github.io/#/`,
+            let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.data._id}?url=https://katakori619.github.io/freshcart/#`,
                 {shippingAddress},
                 {headers}
             )
+            console.log(data);
             window.location.href = data.session.url
-            console.log(data.session.url);
             setLoading(false)
         }
         catch(err){
