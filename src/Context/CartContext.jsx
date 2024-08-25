@@ -7,9 +7,6 @@ export let CartContext = createContext()
 export default function CartContextProvider({children}){
     const[loading , setLoading] = useState(false)
     const { userData } = useContext(UserContext);
-    // let headers = {
-    //     token: localStorage.getItem('userToken')
-    // }
     const headers = userData ? { token: userData } : {};
     const [cart, setCart] = useState(null)
     async function checkout(shippingAddress){
@@ -84,7 +81,7 @@ export default function CartContextProvider({children}){
     }
     async function getCart(){
         if (!userData) {
-            setCart(null); // Clear cart if no user is logged in
+            setCart(null);
             return;
         }
         try{

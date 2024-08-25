@@ -9,7 +9,7 @@ export default function UserContextProvider({children}){
     const logout = () => {
         localStorage.removeItem('userToken');
         setUserData(null);
-        localStorage.removeItem('likedProducts'); // Clear liked products from localStorage
+        localStorage.removeItem('likedProducts');
     };
     return <UserContext.Provider value={{userData , setUserData , logout}}>
         {children}
