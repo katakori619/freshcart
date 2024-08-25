@@ -15,8 +15,6 @@ export default function Wishlist() {
         const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || {};
         delete likedProducts[productId];
         localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
-    
-        // Optionally, you can remove the product from the state here if needed
         const updatedWishList = wish?.data?.filter(product => product.id !== productId);
         setWish(prevWish => ({ ...prevWish, data: updatedWishList }));
       };

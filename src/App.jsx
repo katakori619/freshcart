@@ -49,15 +49,15 @@ let routers = createHashRouter([
 let query = new QueryClient()
 function App() {
   return <QueryClientProvider client={query}>
+    <UserContextProvider>
     <WishlistContextProvider>
       <CartContextProvider>
-        <UserContextProvider>
           <RouterProvider router={routers}></RouterProvider>
           <Toaster/>
           <ReactQueryDevtools/>
-        </UserContextProvider>
       </CartContextProvider>
     </WishlistContextProvider>
+    </UserContextProvider>
   </QueryClientProvider>
 }
 

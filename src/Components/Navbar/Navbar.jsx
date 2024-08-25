@@ -2,16 +2,16 @@ import React , {useContext, useState} from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { CounterContext } from '../../Context/CounterContext'
 import { UserContext } from '../../Context/UserContext'
 import { CartContext } from '../../Context/CartContext'
 export default function Navbar() {
   let{userData , setUserData} = useContext(UserContext)
-  let {cart} = useContext(CartContext)
+  let {cart ,setCart} = useContext(CartContext)
   let navigate = useNavigate()
   function logout(){
     localStorage.removeItem('userToken')
     setUserData(null)
+    setCart(null);
     navigate('/login')
   }
   const [isMenuOpen, setIsMenuOpen] = useState(false);

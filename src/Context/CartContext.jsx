@@ -1,13 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios"
 import toast from "react-hot-toast";
+import { UserContext } from "./UserContext";
 export let CartContext = createContext()
 
 export default function CartContextProvider({children}){
     const[loading , setLoading] = useState(false)
-    let headers = {
-        token: localStorage.getItem('userToken')
-    }
+    const { userData } = useContext(UserContext);
+    // let headers = {
+    //     token: localStorage.getItem('userToken')
+    // }
+    const headers = userData ? { token: userData } : {};
     const [cart, setCart] = useState(null)
     async function checkout(shippingAddress){
         try{
@@ -80,6 +83,10 @@ export default function CartContextProvider({children}){
         }
     }
     async function getCart(){
+        if (!userData) {
+            setCart(null); // Clear cart if no user is logged in
+            return;
+        }
         try{
             setLoading(true)
             let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/cart` , {
@@ -90,13 +97,14 @@ export default function CartContextProvider({children}){
         }
         catch(err){
             setLoading(true)
+            setCart(null)
             console.log(err);
             setLoading(false)
         }
     }
     useEffect(()=>{
         getCart()
-    },[])
+    },[userData])
     return <CartContext.Provider value={{checkout,deleteCart ,addProductToCart , getCart , cart , setCart , updateProductCount , deleteProductFromCart , loading , setLoading}}>
         {children}
     </CartContext.Provider>

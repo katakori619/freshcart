@@ -12,26 +12,6 @@ import useProduct from '../../Hooks/useProduct'
 export default function Home() {
   window.document.title = "Home"
   const [products,setProducts] = useState([])
-  // async function getRecentProducts(){
-  //   try{
-  //     let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
-  //     setProducts(data.data)
-  //   }
-  //   catch(err){
-  //     console.log(err);
-  //   }
-  // }
-  // useEffect(()=>{
-  //   getRecentProducts()
-  // }) 
-  // function getProducts(){
-  //   return axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
-  // }
-  // let {data , isFetching , isLoading , isError , error} = useQuery({
-  //   queryKey: ['recentProducts'],
-  //   queryFn: getProducts,
-  //   select:(data)=>data?.data.data
-  // })
   let {data , isFetching , isLoading , isError , error} = useProduct()
   return <>
     
