@@ -2,15 +2,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
 import { WishlistContext } from '../../Context/WishlistContext'
+import { UserContext } from '../../Context/UserContext'
 
 export default function RecentProducts({product , onRemove}) {
   let {addProductToCart} =  useContext(CartContext)
   let {addProductToWishlist ,deleteProductFromWishlist} = useContext(WishlistContext)
+  let {userData} = useContext(UserContext)
   const [isLiked, setIsLiked] = useState(false);
   useEffect(() => {
     const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || {};
     setIsLiked(!!likedProducts[product?.id]);
-  }, [product?.id]);
+  }, [product?.id , userData]);
   const handleLikeToggle = () => {
     setIsLiked((prevIsLiked) => {
       const newIsLiked = !prevIsLiked;

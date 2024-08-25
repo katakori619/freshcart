@@ -1,13 +1,19 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios"
 import toast from "react-hot-toast";
+import { UserContext } from "./UserContext";
+
 export let WishlistContext = createContext()
 
 export default function WishlistContextProvider({children}){
     const[loading , setLoading] = useState(false)
+    const { userData } = useContext(UserContext);
+    // let headers = {
+    //     token: localStorage.getItem('userToken')
+    // }
     let headers = {
-        token: localStorage.getItem('userToken')
-    }
+        token: userData,
+    };
     const [wish, setWish] = useState(null)
     async function addProductToWishlist(productId){
         try{
@@ -59,9 +65,11 @@ export default function WishlistContextProvider({children}){
             setLoading(false)
         }
     }
-    useEffect(()=>{
-        getWishlist()
-    },[])
+    useEffect(() => {
+        if (userData) {
+            getWishlist();
+        }
+    }, [userData]);
     return <WishlistContext.Provider value={{addProductToWishlist , getWishlist , wish , setWish , deleteProductFromWishlist , loading , setLoading}}>
         {children}
     </WishlistContext.Provider>
