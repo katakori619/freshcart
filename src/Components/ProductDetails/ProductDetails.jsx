@@ -25,7 +25,21 @@ export default function ProductDetails() {
     slidesToScroll: 1,
     arrows: false,
     autoplay:true,
-    autoplaySpeed:1500
+    autoplaySpeed:1500,
+    responsive: [
+      {
+          breakpoint: 1024,
+          settings: {
+              slidesToShow: 4,
+          }
+      },
+      {
+          breakpoint: 600,
+          settings: {
+              slidesToShow: 2,
+          }
+      }
+  ]
   };
   let {id} = useParams()
   const [details, setDetails] = useState({})
@@ -77,7 +91,7 @@ export default function ProductDetails() {
       {recommended.map((reco , index)=><Link to={`/productdetails/${reco.id}`}>
         <div key={index}>
           <img src={reco.images[0]} key={index} className='w-full' alt="" />
-          <h3 className='text-[10px] sm:text-lg'>{reco.title.split(' ').slice(0,2).join(' ')}</h3>
+          <h3 className='sm:text-lg'>{reco.title.split(' ').slice(0,2).join(' ')}</h3>
         </div>
       </Link>)}
       </Slider>

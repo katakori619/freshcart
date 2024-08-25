@@ -43,7 +43,7 @@ export default function CategoriesSlider() {
     <Slider {...settings}>
         {categories?.map((category , index)=> <div key={index}>
     <img src={category.image} className='w-full h-[200px] mt-4' alt="" />
-    <h3 className='text-[10px] sm:text-md md:text-lg'>{category.name}</h3>
+    <h3 className='sm:text-lg'>{category.name}</h3>
   </div>)}
     </Slider>
   </>  

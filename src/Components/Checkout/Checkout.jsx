@@ -18,7 +18,7 @@ export default function Checkout() {
     })
     return (
         <>
-        <div className='mx-auto w-1/2 mb-[132px]'>
+        <div className='mx-auto w-1/2 mb-[132px] mt-24 md:mt-0'>
         <h2 className='text-3xl font-bold py-6'>Checkout Now</h2>
             <form className="" onSubmit={formik.handleSubmit}>
 

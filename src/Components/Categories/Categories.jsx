@@ -16,7 +16,7 @@ export default function Categories() {
   }
   return <>
   {!isLoading ? <>
-    <div className="flex flex-wrap mb-10 mt-5">
+    <div className="flex flex-wrap mb-10 mt-28 md:mt-5">
       {data?.map((category , index)=> <div key={index} className="w-full md:w-1/3 p-3">
         <div className="border rounded-md border-gray-300 card" onClick={async()=>{setCategoryId(category?._id)
           setIsClicked(true)
